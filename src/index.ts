@@ -125,13 +125,13 @@ class JsonlWriter {
         await appendFile(this.filePath, `${JSON.stringify(entry)}\n`, "utf8");
       })
       .catch((error) => {
-        this.logger.warn?.(`llm-log: failed to append log entry: ${String(error)}`);
+        this.logger.warn?.(`openclaw-llm-log: failed to append log entry: ${String(error)}`);
       });
   }
 }
 
 const plugin: PluginDefinition = {
-  id: "llm-log",
+  id: "openclaw-llm-log",
   name: "LLM Log",
   description: "Logs OpenClaw LLM inputs and outputs to a local JSONL file.",
   configSchema,
@@ -141,7 +141,7 @@ const plugin: PluginDefinition = {
     const writer = new JsonlWriter(logFilePath, api.logger);
 
     await writer.init();
-    api.logger.info?.(`llm-log: writing JSONL logs to ${logFilePath}`);
+    api.logger.info?.(`openclaw-llm-log: writing JSONL logs to ${logFilePath}`);
 
     api.on("llm_input", (event, ctx) => {
       writer.write({

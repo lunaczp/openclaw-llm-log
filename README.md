@@ -26,9 +26,9 @@ openclaw plugins install @lunaczp/openclaw-llm-log
 
 ```json
 {
-  "plugins": {
-    "entries": {
-      "llm-log": {
+    "plugins": {
+      "entries": {
+      "openclaw-llm-log": {
         "enabled": true,
         "config": {
           "logFilePath": "./logs/openclaw-llm-log.jsonl",
@@ -47,7 +47,7 @@ openclaw plugins install @lunaczp/openclaw-llm-log
 {
   "plugins": {
     "entries": {
-      "llm-log": {
+      "openclaw-llm-log": {
         "enabled": true,
         "path": "/path/to/openclaw-llm-log"
       }
@@ -91,3 +91,4 @@ npm publish --access public
 - `prepack` 会在打包前自动执行 `npm run build`
 - npm 包会包含 `dist/`、`openclaw.plugin.json`、`README.md` 和 `LICENSE`
 - 从 Git 仓库直接使用时，仍然建议先执行 `npm ci && npm run build`
+- `0.2.0` 起插件 id 为 `openclaw-llm-log`，OpenClaw 配置键也应使用这个 id
