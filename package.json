@@ -1,34 +1,59 @@
 {
-  "name": "openclaw-llm-log",
+  "name": "@lunaczp/openclaw-llm-log",
   "version": "0.1.0",
   "description": "OpenClaw plugin that logs LLM inputs and outputs to a local JSONL file.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run typecheck"
   },
   "files": [
     "dist",
     "openclaw.plugin.json",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "openclaw": {
     "extensions": [
       "./dist/index.js"
     ],
     "install": {
-      "localPath": "."
+      "npmSpec": "@lunaczp/openclaw-llm-log",
+      "localPath": ".",
+      "defaultChoice": "npm"
     }
   },
   "keywords": [
     "openclaw",
     "plugin",
     "llm",
-    "logging"
+    "logging",
+    "observability",
+    "jsonl"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lunaczp/openclaw-llm-log.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lunaczp/openclaw-llm-log/issues"
+  },
+  "homepage": "https://github.com/lunaczp/openclaw-llm-log#readme",
   "license": "MIT",
+  "engines": {
+    "node": ">=22.16.0"
+  },
   "peerDependencies": {
     "openclaw": ">=2026.2.3"
   },

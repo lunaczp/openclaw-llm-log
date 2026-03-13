@@ -1,6 +1,7 @@
 {
   "id": "llm-log",
   "name": "LLM Log",
+  "version": "0.1.0",
   "description": "Logs OpenClaw LLM inputs and outputs to a local JSONL file.",
   "configSchema": {
     "type": "object",

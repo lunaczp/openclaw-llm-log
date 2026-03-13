@@ -1,4 +1,4 @@
-# openclaw-llm-log
+# @lunaczp/openclaw-llm-log
 
 一个最小的 OpenClaw plugin，在模型请求前后分别监听 `llm_input` 和 `llm_output` hook，并把内容追加写入本地 JSONL 日志文件。
 
@@ -14,6 +14,12 @@ openclaw plugins install -l ./openclaw-llm-log
 
 ```bash
 openclaw plugins install -l .
+```
+
+发布到 npm 后，推荐直接通过包名安装：
+
+```bash
+openclaw plugins install @lunaczp/openclaw-llm-log
 ```
 
 ## 配置
@@ -64,3 +70,24 @@ openclaw plugins install -l .
 - `payload`
 
 适合后续用 `jq`、`rg` 或日志采集系统直接处理。
+
+## 发布到 npm
+
+发布前执行：
+
+```bash
+npm run typecheck
+npm pack
+```
+
+确认 tarball 内容没问题后再发布：
+
+```bash
+npm publish --access public
+```
+
+说明：
+
+- `prepack` 会在打包前自动执行 `npm run build`
+- npm 包会包含 `dist/`、`openclaw.plugin.json`、`README.md` 和 `LICENSE`
+- 从 Git 仓库直接使用时，仍然建议先执行 `npm ci && npm run build`
