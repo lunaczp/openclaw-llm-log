@@ -1,0 +1,40 @@
+{
+  "name": "openclaw-llm-log",
+  "version": "0.1.0",
+  "description": "OpenClaw plugin that logs LLM inputs and outputs to a local JSONL file.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "README.md"
+  ],
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ],
+    "install": {
+      "localPath": "."
+    }
+  },
+  "keywords": [
+    "openclaw",
+    "plugin",
+    "llm",
+    "logging"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "openclaw": ">=2026.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "openclaw": ">=2026.2.3",
+    "typescript": "^5.9.2"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "llm-log",
+  "name": "LLM Log",
+  "description": "Logs OpenClaw LLM inputs and outputs to a local JSONL file.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "logFilePath": {
+        "type": "string",
+        "default": "./logs/openclaw-llm-log.jsonl",
+        "description": "Path to the JSONL log file. Relative paths resolve from the current working directory."
+      },
+      "includeHistoryMessages": {
+        "type": "boolean",
+        "default": true,
+        "description": "Whether to include full historyMessages in llm_input entries."
+      },
+      "includeSystemPrompt": {
+        "type": "boolean",
+        "default": true,
+        "description": "Whether to include systemPrompt in llm_input entries."
+      }
+    }
+  },
+  "uiHints": {
+    "logFilePath": {
+      "label": "Log file path",
+      "help": "JSONL file path for LLM request/response logs."
+    },
+    "includeHistoryMessages": {
+      "label": "Include history",
+      "help": "Log the full session history sent to the model."
+    },
+    "includeSystemPrompt": {
+      "label": "Include system prompt",
+      "help": "Log the resolved system prompt passed to the model."
+    }
+  }
+}
