@@ -92,3 +92,4 @@ npm publish --access public
 - npm 包会包含 `dist/`、`openclaw.plugin.json`、`README.md` 和 `LICENSE`
 - 从 Git 仓库直接使用时，仍然建议先执行 `npm ci && npm run build`
 - `0.2.0` 起插件 id 为 `openclaw-llm-log`，OpenClaw 配置键也应使用这个 id
+- 相对 `logFilePath` 会解析到 OpenClaw 的 state 目录下，而不是进程当前工作目录

@@ -1,7 +1,7 @@
 {
   "id": "openclaw-llm-log",
   "name": "LLM Log",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Logs OpenClaw LLM inputs and outputs to a local JSONL file.",
   "configSchema": {
     "type": "object",
@@ -10,7 +10,7 @@
       "logFilePath": {
         "type": "string",
         "default": "./logs/openclaw-llm-log.jsonl",
-        "description": "Path to the JSONL log file. Relative paths resolve from the current working directory."
+        "description": "Path to the JSONL log file. Relative paths resolve from the OpenClaw state directory."
       },
       "includeHistoryMessages": {
         "type": "boolean",

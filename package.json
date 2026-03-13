@@ -1,6 +1,6 @@
 {
   "name": "@lunaczp/openclaw-llm-log",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "OpenClaw plugin that logs LLM inputs and outputs to a local JSONL file.",
   "type": "module",
   "main": "dist/index.js",

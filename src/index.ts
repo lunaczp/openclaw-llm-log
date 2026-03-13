@@ -41,7 +41,7 @@ const configSchema: PluginConfigSchema = {
       type: "string",
       default: DEFAULT_LOG_FILE_PATH,
       description:
-        "Path to the JSONL log file. Relative paths resolve from the current working directory.",
+        "Path to the JSONL log file. Relative paths resolve from the OpenClaw state directory.",
     },
     includeHistoryMessages: {
       type: "boolean",
@@ -63,6 +63,17 @@ function resolveConfig(raw: unknown): Required<PluginConfig> {
     includeHistoryMessages: config.includeHistoryMessages ?? true,
     includeSystemPrompt: config.includeSystemPrompt ?? true,
   };
+}
+
+function resolveLogFilePath(api: OpenClawPluginApi, rawPath: string): string {
+  const trimmed = rawPath.trim();
+  if (!trimmed) {
+    return path.join(api.runtime.state.resolveStateDir(), DEFAULT_LOG_FILE_PATH);
+  }
+  if (trimmed.startsWith("~") || path.isAbsolute(trimmed)) {
+    return api.resolvePath(trimmed);
+  }
+  return path.join(api.runtime.state.resolveStateDir(), trimmed);
 }
 
 function toJsonValue(value: unknown, seen = new WeakSet<object>()): JsonValue {
@@ -137,7 +148,7 @@ const plugin: PluginDefinition = {
   configSchema,
   async register(api: OpenClawPluginApi) {
     const config = resolveConfig(api.pluginConfig);
-    const logFilePath = path.resolve(config.logFilePath);
+    const logFilePath = resolveLogFilePath(api, config.logFilePath);
     const writer = new JsonlWriter(logFilePath, api.logger);
 
     await writer.init();
