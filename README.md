@@ -26,8 +26,11 @@ openclaw plugins install @lunaczp/openclaw-llm-log
 
 ```json
 {
-    "plugins": {
-      "entries": {
+  "plugins": {
+    "allow": [
+      "openclaw-llm-log"
+    ],
+    "entries": {
       "openclaw-llm-log": {
         "enabled": true,
         "config": {
@@ -41,11 +44,22 @@ openclaw plugins install @lunaczp/openclaw-llm-log
 }
 ```
 
+建议把 `openclaw-llm-log` 加到 `plugins.allow`。否则 OpenClaw 可能会在启动时提示：
+
+```text
+plugins.allow is empty; discovered non-bundled plugins may auto-load
+```
+
+这不是插件错误，但属于 OpenClaw 对第三方插件的安全提醒。显式加入 allowlist 后，这个 warning 就不会再出现。
+
 如果你确实需要手动写路径配置，请使用你自己的插件目录，例如：
 
 ```json
 {
   "plugins": {
+    "allow": [
+      "openclaw-llm-log"
+    ],
     "entries": {
       "openclaw-llm-log": {
         "enabled": true,
