@@ -1,5 +1,7 @@
 # @lunaczp/openclaw-llm-log
 
+[English README](./README.en.md)
+
 一个最小的 OpenClaw plugin，在模型请求前后分别监听 `llm_input` 和 `llm_output` hook，并把内容追加写入本地 JSONL 日志文件。
 
 ## 安装
